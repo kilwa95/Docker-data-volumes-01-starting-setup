@@ -36,10 +36,14 @@ app.post('/create', async (req, res) => {
     if (exists) {
       res.redirect('/exists');
     } else {
-      await fs.rename(tempFilePath, finalFilePath);
+      await fs.copyFile(tempFilePath, finalFilePath);
+      await fs.unlink(finalFilePath);
       res.redirect('/');
     }
   });
 });
 
 app.listen(80);
+
+
+// docker run -p 3001:80 -d --name feedback-app-volumes -v feedback:/app/feedback  feedback-node:volumes
