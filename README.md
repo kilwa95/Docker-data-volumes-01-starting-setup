@@ -26,3 +26,13 @@ docker build -t feedback-node .
 ```bash
 docker run -p 3001:80 -d --name feedback-app-volumes -v feedback:/app/feedback feedback-node:volumes
 ```
+
+## supprimer un volume
+
+```bash
+docker volume rm feedback
+```
+OU
+```bash
+docker volume prun
+```
